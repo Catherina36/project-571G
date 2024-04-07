@@ -1,14 +1,15 @@
 ## Getting Started
 
-Create a project using this example:
+Make sure you are not using old node version. For example, we are using node version 20. You can use the following command.
 
 ```bash
-npx thirdweb create --contract --template hardhat-javascript-starter
+nvm use 20
 ```
+Before building the project, you need to download hardhat locally, run:
 
-You can start editing the page by modifying `contracts/Contract.sol`.
-
-To add functionality to your contracts, you can use the `@thirdweb-dev/contracts` package which provides base contracts and extensions to inherit. The package is already installed with this project. Head to our [Contracts Extensions Docs](https://portal.thirdweb.com/contractkit) to learn more.
+```bash
+npm install --save-dev hardhat
+```
 
 ## Building the project
 
@@ -32,6 +33,20 @@ npm run deploy
 yarn deploy
 ```
 
+After deploying the contract, copy the private key of your wallet and create a .env file, write the following in .env file:
+
+```bash
+PRIVATE_KEY=your private key
+```
+
+You will also need to update the contract address in /frontend/src/context/index.jsx line 9. New contract address can be found in thirdweb website after deploy. 
+
+```bash
+const { contract } = useContract('contract address');
+```
+
+![contract_address](contract_address.png)
+
 ## Releasing Contracts
 
 If you want to release a version of your contracts publicly, you can use one of the followings command:
@@ -42,6 +57,14 @@ npm run release
 yarn release
 ```
 
-## Join our Discord!
+## Front-end 
 
-For any questions, suggestions, join our discord at [https://discord.gg/thirdweb](https://discord.gg/thirdweb).
+Now, open the frontend folder, run:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Finally, you can open "localhost:5173/" to run the project.
